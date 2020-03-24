@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <?php
+require 'login.php';
 require __DIR__ . '/vendor/autoload.php';
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Entity;
 use Google\Cloud\Datastore\EntityIterator;
 use Google\Cloud\Datastore\Key;
 use Google\Cloud\Datastore\Query\Query;
-$newpname = $POST('newname');
+$newname = $POST('newname');
 if($POST('name') != null){
 
     $transaction = $datastore->transaction();
@@ -16,7 +17,7 @@ if($POST('name') != null){
     $transaction->update($name);
     $transaction->commit();
 
-    header("Location: main.php");
+    header("Location: /main");
 }
 else {echo('username cannot be empty'); }
 

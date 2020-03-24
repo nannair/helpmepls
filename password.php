@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <?php
+require 'login.php';
 require __DIR__ . '/vendor/autoload.php';
 use Google\Cloud\Datastore\DatastoreClient;
 use Google\Cloud\Datastore\Entity;
@@ -21,7 +22,7 @@ if($POST('password') == $password){
     $password['password'] = $newpassword;
     $transaction->update($password);
     $transaction->commit();
-    header("Location: login.php");
+    header("Location: /login");
     
 }
 else {echo('old password incorrect'); }
